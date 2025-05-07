@@ -82,7 +82,7 @@ M.nvdash = {
   "                                               ",
   "           Created Art By @ak4bento            ",
   "                                               ",
-},
+  },
 
   buttons = {
     { txt = "  Find File", keys = "ff", cmd = "Telescope find_files" },
