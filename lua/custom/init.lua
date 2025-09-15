@@ -17,4 +17,25 @@ require("noice").setup {
     lsp_doc_border = false, -- add a border to hover docs and signature help
   },
 }
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.py",
+  callback = function()
+    require("conform").format({ async = false, lsp_fallback = true })
+  end,
+})
+
+-- local noice = require("noice")
+--
+-- -- Override LSP markdown rendering ke Noice
+-- vim.lsp.util.convert_input_to_markdown_lines = noice.util.lsp.convert_input_to_markdown_lines
+-- vim.lsp.util.stylize_markdown = noice.util.lsp.stylize_markdown
+--
+-- -- (Opsional) Tambahkan border pada floating window biar lebih rapi
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+--   vim.lsp.handlers.hover, { border = "rounded" }
+-- )
+-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+--   vim.lsp.handlers.signature_help, { border = "rounded" }
+-- )
 return {}

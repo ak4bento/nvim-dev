@@ -18,3 +18,8 @@ vim.g.VM_maps = {
 
 -- Jika ingin mengganti mapping default NvChad untuk <C-n>
 map("n", "<leader>q", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+
+-- stay in visual mode after indent
+map("v", "<", "<gv", { desc = "Indent left and stay in visual mode" })
+map("v", ">", ">gv", { desc = "Indent right and stay in visual mode" })
+
