@@ -92,6 +92,28 @@ return {
     branch = "master",
     lazy = false,
   },
+  {
+    "kndndrj/nvim-dbee",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    build = function()
+      -- Install tries to automatically detect the install method.
+      -- if it fails, try calling it with one of these parameters:
+      --    "curl", "wget", "bitsadmin", "go"
+      require("dbee").install()
+    end,
+    config = function()
+      require("dbee").setup(--[[optional config]])
+      vim.keymap.set("n", "<leader>de", "<cmd>lua require('dbee').open()<CR>", { desc = "Open dbee" })
+      vim.keymap.set("n", "<leader>dc", "<cmd>lua require('dbee').close()<CR>", { desc = "Close dbee" })
+      vim.keymap.set("n", "<leader>dt", "<cmd>lua require('dbee').toggle()<CR>", { desc = "Toggle dbee" })
+      vim.keymap.set("n", "<leader>dt", "<cmd>lua require('dbee').execute(query)<CR>", { desc = "Execute Querydbee" })
+      vim.keymap.set("n", "<leader>dt", "<cmd>lua require('dbee').store(format, output, opts)<CR>", { desc = "Store dbee" })
+
+    end,
+  },
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
